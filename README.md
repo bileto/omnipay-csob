@@ -6,3 +6,16 @@
 processing library for PHP 5.3+. This package implements PayPal support for Omnipay.
 
 ČSOB Online Payment Gateway [documentation](https://github.com/csob/paymentgateway/wiki)
+
+## Installation
+
+Omnipay is installed via [Composer](http://getcomposer.org/). To install, simply add it
+to your `composer.json` file:
+
+```json
+{
+    "require": {
+        "bileto/omnipay-csob": "~0.1"
+    }
+}
+```
