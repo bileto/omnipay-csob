@@ -1,0 +1,32 @@
+{
+  "name": "bileto/omnipay-csob",
+  "type": "library",
+  "description": "ČSOB gateway for Omnipay payment processing library",
+  "keywords": [
+    "gateway",
+    "merchant",
+    "omnipay",
+    "pay",
+    "payment",
+    "csob",
+    "purchase"
+  ],
+  "homepage": "https://github.com/bileto/omnipay-csob",
+  "license": "MIT",
+  "authors": [
+    {
+      "name": "Michal Sänger",
+      "email": "michal.sanger@bileto.cz"
+    }
+  ],
+  "autoload": {
+    "psr-4": { "Omnipay\\Csob\\" : "src/" }
+  },
+  "require": {
+    "omnipay/common": "^2.3"
+  },
+  "require-dev": {
+    "omnipay/tests": "^2.0",
+    "symfony/var-dumper": "^2.7"
+  }
+}
