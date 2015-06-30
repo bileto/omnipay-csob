@@ -2,18 +2,40 @@
 
 namespace Omnipay\Csob;
 
+/**
+ * Cart item entity
+ * @package Omnipay\Csob
+ * @see https://github.com/csob/paymentgateway/wiki/eAPI-v1-(English-version)#cart-items
+ */
 class CartItem
 {
-    /** @var string */
+    /**
+     * Item’s name, maximum length 20 characters
+     *
+     * @var string
+     */
     private $name;
 
-    /** @var int */
+    /**
+     * Quantity, must be >=1
+     *
+     * @var int
+     */
     private $quantity;
 
-    /** @var int */
+    /**
+     * Total price for the quantity of the items in hundredths of the currency.
+     * The item currency of all the requests will be automatically used as the price.
+     *
+     * @var int
+     */
     private $amount;
 
-    /** @var string */
+    /**
+     * Cart item’s description, maximum length 40 characters
+     *
+     * @var string
+     */
     private $description;
 
     function __construct($name, $quantity, $amount, $description = null)
@@ -88,6 +110,9 @@ class CartItem
         return $this->description;
     }
 
+    /**
+     * @return array
+     */
     public function toArray()
     {
         return [
