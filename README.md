@@ -15,7 +15,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "bileto/omnipay-csob": "~0.1"
+        "bileto/omnipay-csob": "~0.2"
     }
 }
 ```
