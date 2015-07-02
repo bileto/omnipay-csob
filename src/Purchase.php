@@ -9,6 +9,19 @@ namespace Omnipay\Csob;
  */
 class Purchase
 {
+    const CURENCY_CZK = 'CZK';
+    const CURENCY_EUR = 'EUR';
+    const CURENCY_USD = 'USD';
+    const CURENCY_GBP = 'GBP';
+
+    const LANG_CZ = 'CZ';
+    const LANG_EN = 'EN';
+    const LANG_DE = 'DE';
+    const LANG_SK = 'SK';
+
+    const PAY_OPERATION_PAYMENT = 'payment';
+    const PAY_METHOD_CARD = 'card';
+
     /**
      * Merchant’s ID assigned by the payment gateway
      *
@@ -38,7 +51,7 @@ class Purchase
      *
      * @var string
      */
-    private $payOperation = 'payment';
+    private $payOperation = self::PAY_OPERATION_PAYMENT;
 
     /**
      * Type of implicit payment method to be offered to the customer.
@@ -46,7 +59,7 @@ class Purchase
      *
      * @var string
      */
-    private $payMethod = 'card';
+    private $payMethod = self::PAY_METHOD_CARD;
 
     /**
      * Total amount in hundredths of the basic currency.
@@ -62,7 +75,7 @@ class Purchase
      *
      * @var string
      */
-    private $currency = 'CZK';
+    private $currency = self::CURENCY_CZK;
 
     /**
      * It indicates whether the payment should automatically be put in the queue
@@ -134,7 +147,7 @@ class Purchase
      *
      * @var string
      */
-    private $language = 'CZ';
+    private $language = self::LANG_CZ;
 
     /**
      * @param string $merchantId

@@ -11,6 +11,12 @@ use Omnipay\Csob\Message\PaymentResponse;
 use Omnipay\Csob\Sign\DataSignator;
 use Omnipay\Csob\Sign\DataVerifier;
 
+/**
+ * ČSOB payment gateway
+ *
+ * @package Omnipay\Csob
+ * @see https://github.com/csob/paymentgateway/wiki/eAPI-v1-(English-version)
+ */
 class Gateway extends AbstractGateway
 {
     /** @var DataSignator */
