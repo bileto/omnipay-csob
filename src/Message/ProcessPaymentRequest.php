@@ -51,9 +51,9 @@ class ProcessPaymentRequest extends AbstractRequest
         $httpRequest = $this->httpClient->get(
             $url,
             null,
-            [
+            array(
                 RequestOptions::ALLOW_REDIRECTS => false,
-            ]
+            )
         );
 
         $httpResponse = $httpRequest->send();
