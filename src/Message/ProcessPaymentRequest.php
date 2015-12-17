@@ -57,7 +57,7 @@ class ProcessPaymentRequest extends AbstractRequest
 
     private function createUri()
     {
-        $uri = 'https://iapi.iplatebnibrana.csob.cz/api/v1/payment/process';
+        $uri = 'https://iapi.iplatebnibrana.csob.cz/api/v1.5/payment/process';
 
         $signator = $this->getSignator();
         $signature = $signator->sign($this->getParameters(), ['merchantId', 'payId', 'dttm']);
