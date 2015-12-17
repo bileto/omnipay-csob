@@ -3,6 +3,7 @@
 namespace Omnipay\Csob\Message;
 
 use Guzzle\Http\Message\RequestInterface;
+use GuzzleHttp\RequestOptions;
 
 class ProcessPaymentRequest extends AbstractRequest
 {
@@ -46,9 +47,13 @@ class ProcessPaymentRequest extends AbstractRequest
      */
     public function sendData($data)
     {
-        $httpRequest = $this->httpClient->createRequest(
-            RequestInterface::GET,
-            $this->createUri()
+        $url = $this->createUri();
+        $httpRequest = $this->httpClient->get(
+            $url,
+            null,
+            array(
+                RequestOptions::ALLOW_REDIRECTS => false,
+            )
         );
 
         $httpResponse = $httpRequest->send();
