@@ -12,16 +12,16 @@ use Omnipay\Omnipay;
 class GatewayFactory
 {
     /**
-     * @param string $publicKeyFilename
-     * @param string $privateKeyFilename
+     * @param string $publicKey Content of the file
+     * @param string $privateKey Content of the file
      * @param string $privateKeyPassword
      * @return Gateway
      */
-    public static function createInstance($publicKeyFilename, $privateKeyFilename, $privateKeyPassword = null)
+    public static function createInstance($publicKey, $privateKey, $privateKeyPassword = null)
     {
         $preparer = new Preparer();
-        $signator = new Signator($privateKeyFilename, $privateKeyPassword);
-        $verifier = new Verifier($publicKeyFilename);
+        $signator = new Signator($privateKey, $privateKeyPassword);
+        $verifier = new Verifier($publicKey);
         $dataSignator = new DataSignator($preparer, $signator);
         $dataVerifier = new DataVerifier($preparer, $verifier);
 
