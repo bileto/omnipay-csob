@@ -5,11 +5,14 @@ namespace Omnipay\Csob\Sign;
 class Verifier
 {
     /** @var string */
-    private $publicKeyFilename;
+    private $publicKey;
 
-    function __construct($publicKeyFilename)
+    /**
+     * @param string $publicKey Content of public key file
+     */
+    function __construct($publicKey)
     {
-        $this->publicKeyFilename = $publicKeyFilename;
+        $this->publicKey = $publicKey;
     }
 
     /**
@@ -18,8 +21,7 @@ class Verifier
      * @return bool
      */
     function verify($text, $signatureBase64) {
-        $public = file_get_contents($this->publicKeyFilename);
-        $publicKeyId = openssl_get_publickey($public);
+        $publicKeyId = openssl_get_publickey($this->publicKey);
 
         $signature = base64_decode($signatureBase64);
         $res = openssl_verify($text, $signature, $publicKeyId);

@@ -4,7 +4,7 @@ class DataVerifierTest extends PHPUnit_Framework_TestCase
 {
     public function testVerify()
     {
-        $publicKey = __DIR__ . '/assets/mips_iplatebnibrana.csob.cz.pub';
+        $publicKey = file_get_contents(__DIR__ . '/assets/mips_iplatebnibrana.csob.cz.pub');
         $preparer = new \Omnipay\Csob\Sign\Preparer();
         $verifier = new \Omnipay\Csob\Sign\Verifier($publicKey);
         $dataVerifier = new \Omnipay\Csob\Sign\DataVerifier($preparer, $verifier);
