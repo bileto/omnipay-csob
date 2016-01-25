@@ -5,14 +5,18 @@ namespace Omnipay\Csob\Sign;
 class Signator
 {
     /** @var string */
-    private $privateKeyFilename;
+    private $privateKey;
 
     /** @var string */
     private $privateKeyPassword;
 
-    function __construct($privateKeyFilename, $privateKeyPassword = null)
+    /**
+     * @param string $privateKey Content of private key file
+     * @param string $privateKeyPassword
+     */
+    function __construct($privateKey, $privateKeyPassword = null)
     {
-        $this->privateKeyFilename = $privateKeyFilename;
+        $this->privateKey = $privateKey;
         $this->privateKeyPassword = $privateKeyPassword;
     }
 
@@ -21,8 +25,7 @@ class Signator
      * @return string Base64 encoded
      */
     public function sign($text) {
-        $private = file_get_contents($this->privateKeyFilename);
-        $privateKeyId = openssl_get_privatekey($private, $this->privateKeyPassword);
+        $privateKeyId = openssl_get_privatekey($this->privateKey, $this->privateKeyPassword);
 
         openssl_sign($text, $signature, $privateKeyId);
         $signature = base64_encode($signature);

@@ -4,7 +4,7 @@ class DataSignatorTest extends PHPUnit_Framework_TestCase {
 
     public function testSign()
     {
-        $privateKey = __DIR__ . '/assets/rsa_A1029DTmM7.key';
+        $privateKey = file_get_contents(__DIR__ . '/assets/rsa_A1029DTmM7.key');
         $publicKey = file_get_contents(__DIR__ . '/assets/rsa_A1029DTmM7.pub');
         $preparer = new \Omnipay\Csob\Sign\Preparer();
         $signator = new \Omnipay\Csob\Sign\Signator($privateKey);
