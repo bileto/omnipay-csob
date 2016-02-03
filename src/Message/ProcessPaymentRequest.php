@@ -2,9 +2,6 @@
 
 namespace Omnipay\Csob\Message;
 
-use Guzzle\Http\Message\RequestInterface;
-use GuzzleHttp\RequestOptions;
-
 class ProcessPaymentRequest extends AbstractRequest
 {
     public function setDttm($value)
@@ -52,7 +49,7 @@ class ProcessPaymentRequest extends AbstractRequest
             $url,
             null,
             array(
-                RequestOptions::ALLOW_REDIRECTS => false,
+                'allow_redirects' => false,
             )
         );
 
