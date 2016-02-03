@@ -17,7 +17,7 @@ class GatewayFactory
      * @param string $privateKeyPassword
      * @return Gateway
      */
-    public static function createInstance($publicKey, $privateKey, $privateKeyPassword = null)
+    public static function createInstance($publicKey, $privateKey, $privateKeyPassword = null, $isSandbox = true)
     {
         $preparer = new Preparer();
         $signator = new Signator($privateKey, $privateKeyPassword);
@@ -29,6 +29,7 @@ class GatewayFactory
         $gateway = Omnipay::create('Csob');
         $gateway->setSignator($dataSignator);
         $gateway->setVerifier($dataVerifier);
+        $gateway->setSandbox($isSandbox);
         return $gateway;
     }
 }

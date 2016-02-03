@@ -134,9 +134,10 @@ class InitPaymentRequest extends AbstractRequest
      */
     public function sendData($data)
     {
+        $apiUrl = $this->getApiUrl() . '/payment/init';
         $httpRequest = $this->httpClient->createRequest(
             RequestInterface::POST,
-            'https://iapi.iplatebnibrana.csob.cz/api/v1.5/payment/init',
+            $apiUrl,
             ['Content-Type' => 'application/json'],
             json_encode($data)
         );

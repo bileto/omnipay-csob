@@ -13,6 +13,9 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     /** @var DataVerifier */
     private $verifier;
 
+    /** @var string */
+    private $apiUrl;
+
     /**
      * @param DataSignator $signator
      */
@@ -43,5 +46,21 @@ abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
     public function setVerifier(DataVerifier $verifier)
     {
         $this->verifier = $verifier;
+    }
+
+    /**
+     * @return string
+     */
+    public function getApiUrl()
+    {
+        return $this->apiUrl;
+    }
+
+    /**
+     * @param string $apiUrl
+     */
+    public function setApiUrl($apiUrl)
+    {
+        $this->apiUrl = $apiUrl;
     }
 }

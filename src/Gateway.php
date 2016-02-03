@@ -15,15 +15,21 @@ use Omnipay\Csob\Sign\DataVerifier;
  * ČSOB payment gateway
  *
  * @package Omnipay\Csob
- * @see https://github.com/csob/paymentgateway/wiki/eAPI-v1-(English-version)
+ * @see https://github.com/csob/paymentgateway/wiki/eAPI-1.5-EN
  */
 class Gateway extends AbstractGateway
 {
+    const URL_SANDBOX = 'https://iapi.iplatebnibrana.csob.cz/api/v1.5';
+    const URL_PRODUCTION = 'https://api.platebnibrana.csob.cz/api/v1.5';
+
     /** @var DataSignator */
     private $signator;
 
     /** @var DataVerifier */
     private $verifier;
+
+    /** @var bool */
+    private $isSandbox = false;
 
     /**
      * Get gateway display name
@@ -49,6 +55,22 @@ class Gateway extends AbstractGateway
     public function setVerifier(DataVerifier $verifier)
     {
         $this->verifier = $verifier;
+    }
+
+    /**
+     * @return boolean
+     */
+    public function isSandbox()
+    {
+        return $this->isSandbox;
+    }
+
+    /**
+     * @param boolean $isSandbox
+     */
+    public function setSandbox($isSandbox)
+    {
+        $this->isSandbox = (bool)$isSandbox;
     }
 
     /**
@@ -116,9 +138,21 @@ class Gateway extends AbstractGateway
 
         $request->setSignator($this->signator);
         $request->setVerifier($this->verifier);
+        $apiUrl = $this->getApiUrl();
+        $request->setApiUrl($apiUrl);
 
         return $request;
     }
 
-
+    /**
+     * @return string
+     */
+    private function getApiUrl()
+    {
+        if (!$this->isSandbox()) {
+            return self::URL_PRODUCTION;
+        } else {
+            return self::URL_SANDBOX;
+        }
+    }
 }
