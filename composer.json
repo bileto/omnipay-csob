@@ -23,7 +23,7 @@
     "psr-4": { "Omnipay\\Csob\\" : "src/" }
   },
   "require": {
-    "omnipay/common": "^2.3"
+    "omnipay/common": "2.3.*"
   },
   "require-dev": {
     "omnipay/tests": "^2.0",
