@@ -5,6 +5,7 @@ namespace Omnipay\Csob;
 use Omnipay\Common\AbstractGateway;
 use Omnipay\Common\Exception\InvalidResponseException;
 use Omnipay\Csob\Message\CompletePurchaseRequest;
+use Omnipay\Csob\Message\EchoRequest;
 use Omnipay\Csob\Message\InitPaymentRequest;
 use Omnipay\Csob\Message\ProcessPaymentRequest;
 use Omnipay\Csob\Message\PaymentResponse;
@@ -122,6 +123,30 @@ class Gateway extends AbstractGateway
     public function completePurchase(array $parameters = array())
     {
         return $this->createRequest(CompletePurchaseRequest::class, $parameters);
+    }
+
+    /**
+     * @param string $merchantId
+     * @param string $httpMethod
+     * @return Message\EchoResponse
+     * @throws \Exception
+     * @see https://github.com/csob/paymentgateway/wiki/eAPI-1.5-EN#getpost-httpsapiplatebnibranacsobczapiv15echo-
+     */
+    public function testGateway($merchantId, $httpMethod = 'GET')
+    {
+        $data = [
+            'merchantId' => $merchantId,
+            'dttm' => date('Ymdhis'),
+        ];
+
+        /** @var EchoRequest $request */
+        $request = $this->createRequest(EchoRequest::class, $data);
+        if ($httpMethod === 'POST') {
+            $response = $request->sendViaPost();
+        } else {
+            $response = $request->sendViaGet();
+        }
+        return $response;
     }
 
     protected function createRequest($class, array $parameters)
