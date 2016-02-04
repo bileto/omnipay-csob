@@ -12,10 +12,10 @@ class ProcessPaymentResponse extends OmnipayAbstractResponse implements Redirect
     /** @var string */
     private $redirectUrl;
 
-    function __construct(RequestInterface $request, $redirectUrl)
+    function __construct(RequestInterface $request, $redirectUrl, $data)
     {
         $this->redirectUrl = $redirectUrl;
-        parent::__construct($request, null);
+        parent::__construct($request, $data);
     }
 
     /**
@@ -55,6 +55,14 @@ class ProcessPaymentResponse extends OmnipayAbstractResponse implements Redirect
     public function isRedirect()
     {
         return true;
+    }
+
+    public function getTransactionReference()
+    {
+        if (is_array($this->data) && isset($this->data['payId'])) {
+            return $this->data['payId'];
+        }
+        return null;
     }
 
 

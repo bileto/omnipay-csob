@@ -96,8 +96,8 @@ class Gateway extends AbstractGateway
 
     /**
      * @param array $parameters
-     * @return InitPaymentRequest
-     * @throws \Exception
+     * @return ProcessPaymentRequest
+     * @throws InvalidResponseException
      */
     public function purchase(array $parameters = array())
     {

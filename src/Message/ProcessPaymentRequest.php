@@ -54,7 +54,8 @@ class ProcessPaymentRequest extends AbstractRequest
         );
 
         $httpResponse = $httpRequest->send();
-        return $this->response = new ProcessPaymentResponse($this, $httpResponse->getEffectiveUrl());
+        $redirectUrl = $httpResponse->getEffectiveUrl();
+        return $this->response = new ProcessPaymentResponse($this, $redirectUrl, $data);
     }
 
     private function createUri()
