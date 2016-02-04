@@ -9,6 +9,7 @@ use Omnipay\Csob\Message\EchoRequest;
 use Omnipay\Csob\Message\InitPaymentRequest;
 use Omnipay\Csob\Message\ProcessPaymentRequest;
 use Omnipay\Csob\Message\PaymentResponse;
+use Omnipay\Csob\Message\ReversePaymentRequest;
 use Omnipay\Csob\Sign\DataSignator;
 use Omnipay\Csob\Sign\DataVerifier;
 
@@ -147,6 +148,16 @@ class Gateway extends AbstractGateway
             $response = $request->sendViaGet();
         }
         return $response;
+    }
+
+    /**
+     * @param array $parameters
+     * @return ReversePaymentRequest
+     * @throws \Exception
+     */
+    public function void(array $parameters = array())
+    {
+        return $this->createRequest(ReversePaymentRequest::class, $parameters);
     }
 
     protected function createRequest($class, array $parameters)
