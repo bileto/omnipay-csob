@@ -1,13 +1,17 @@
 <?php
 
+use Omnipay\Csob\Sign\DataVerifier;
+use Omnipay\Csob\Sign\Preparer;
+use Omnipay\Csob\Sign\Verifier;
+
 class DataVerifierTest extends PHPUnit_Framework_TestCase
 {
     public function testVerify()
     {
         $publicKey = file_get_contents(__DIR__ . '/assets/mips_iplatebnibrana.csob.cz.pub');
-        $preparer = new \Omnipay\Csob\Sign\Preparer();
-        $verifier = new \Omnipay\Csob\Sign\Verifier($publicKey);
-        $dataVerifier = new \Omnipay\Csob\Sign\DataVerifier($preparer, $verifier);
+        $preparer = new Preparer();
+        $verifier = new Verifier($publicKey);
+        $dataVerifier = new DataVerifier($preparer, $verifier);
 
         $data = [
             "authCode" => "518778",

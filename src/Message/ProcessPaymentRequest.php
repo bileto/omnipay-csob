@@ -28,12 +28,6 @@ class ProcessPaymentRequest extends AbstractRequest
     public function getData()
     {
         return $this->getParameters();
-        $data = [
-            "merchantId" => $this->getParameter('merchantId'),
-            "payId" => $this->getParameter('payId'),
-            "dttm" => $this->getParameter('dttm'),
-        ];
-        return $data;
     }
 
     /**

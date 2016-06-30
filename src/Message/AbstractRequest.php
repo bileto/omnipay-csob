@@ -2,10 +2,11 @@
 
 namespace Omnipay\Csob\Message;
 
+use Omnipay\Common\Message\AbstractRequest as OmnipayAbstractRequest;
 use Omnipay\Csob\Sign\DataSignator;
 use Omnipay\Csob\Sign\DataVerifier;
 
-abstract class AbstractRequest extends \Omnipay\Common\Message\AbstractRequest
+abstract class AbstractRequest extends OmnipayAbstractRequest
 {
     /** @var DataSignator */
     private $signator;
