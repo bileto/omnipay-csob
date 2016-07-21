@@ -16,7 +16,11 @@
   "authors": [
     {
       "name": "Michal Sänger",
-      "email": "michal.sanger@bileto.cz"
+      "email": "michal.sanger@bileto.com"
+    },
+    {
+      "name": "Jan Machala",
+      "email": "jan.machala@bileto.com"
     }
   ],
   "autoload": {
