@@ -145,7 +145,7 @@ class Purchase
     /**
      * Preferred language mutation to be displayed on the payment gateway.
      * Czech mutation is by default.
-     * Approved values: CZ, EN, DE, SK
+     * Approved values: CZ, EN, DE, FR, HU, IT, JP, PL, PT, RO, RU, SK, ES, TR, VN
      *
      * @var string
      */
