@@ -9,10 +9,10 @@ namespace Omnipay\Csob;
  */
 class Purchase
 {
-    const CURENCY_CZK = 'CZK';
-    const CURENCY_EUR = 'EUR';
-    const CURENCY_USD = 'USD';
-    const CURENCY_GBP = 'GBP';
+    const CURRENCY_CZK = 'CZK';
+    const CURRENCY_EUR = 'EUR';
+    const CURRENCY_USD = 'USD';
+    const CURRENCY_GBP = 'GBP';
 
     const LANG_CZ = 'CZ';
     const LANG_EN = 'EN';
@@ -75,7 +75,7 @@ class Purchase
      *
      * @var string
      */
-    private $currency = self::CURENCY_CZK;
+    private $currency = self::CURRENCY_CZK;
 
     /**
      * It indicates whether the payment should automatically be put in the queue
