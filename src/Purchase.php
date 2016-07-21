@@ -13,6 +13,8 @@ class Purchase
     const CURRENCY_EUR = 'EUR';
     const CURRENCY_USD = 'USD';
     const CURRENCY_GBP = 'GBP';
+    const CURRENCY_HUF = 'HUF';
+    const CURRENCY_PLN = 'PLN';
 
     const LANG_CZ = 'CZ';
     const LANG_EN = 'EN';
@@ -71,7 +73,7 @@ class Purchase
 
     /**
      * Currency code.
-     * Approved values: CZK, EUR, USD, GBP
+     * Approved values: CZK, EUR, USD, GBP, HUF, PLN
      *
      * @var string
      */
