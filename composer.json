@@ -31,7 +31,7 @@
   },
   "require-dev": {
     "omnipay/tests": "^2.0",
-    "symfony/var-dumper": "^2.7",
-    "mockery/mockery": "^0.9.4"
+    "symfony/var-dumper": "3.1.*",
+    "mockery/mockery": "0.9.*"
   }
 }
