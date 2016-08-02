@@ -16,12 +16,12 @@ use Omnipay\Csob\Sign\DataVerifier;
  * ČSOB payment gateway
  *
  * @package Omnipay\Csob
- * @see https://github.com/csob/paymentgateway/wiki/eAPI-1.5-EN
+ * @see https://github.com/csob/paymentgateway/wiki/eAPI-v1.6-EN
  */
 class Gateway extends AbstractGateway
 {
-    const URL_SANDBOX = 'https://iapi.iplatebnibrana.csob.cz/api/v1.5';
-    const URL_PRODUCTION = 'https://api.platebnibrana.csob.cz/api/v1.5';
+    const URL_SANDBOX = 'https://iapi.iplatebnibrana.csob.cz/api/v1.6';
+    const URL_PRODUCTION = 'https://api.platebnibrana.csob.cz/api/v1.6';
 
     /** @var DataSignator */
     private $signator;

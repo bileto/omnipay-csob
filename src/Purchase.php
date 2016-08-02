@@ -9,10 +9,12 @@ namespace Omnipay\Csob;
  */
 class Purchase
 {
-    const CURENCY_CZK = 'CZK';
-    const CURENCY_EUR = 'EUR';
-    const CURENCY_USD = 'USD';
-    const CURENCY_GBP = 'GBP';
+    const CURRENCY_CZK = 'CZK';
+    const CURRENCY_EUR = 'EUR';
+    const CURRENCY_USD = 'USD';
+    const CURRENCY_GBP = 'GBP';
+    const CURRENCY_HUF = 'HUF';
+    const CURRENCY_PLN = 'PLN';
 
     const LANG_CZ = 'CZ';
     const LANG_EN = 'EN';
@@ -71,11 +73,11 @@ class Purchase
 
     /**
      * Currency code.
-     * Approved values: CZK, EUR, USD, GBP
+     * Approved values: CZK, EUR, USD, GBP, HUF, PLN
      *
      * @var string
      */
-    private $currency = self::CURENCY_CZK;
+    private $currency = self::CURRENCY_CZK;
 
     /**
      * It indicates whether the payment should automatically be put in the queue
@@ -143,7 +145,7 @@ class Purchase
     /**
      * Preferred language mutation to be displayed on the payment gateway.
      * Czech mutation is by default.
-     * Approved values: CZ, EN, DE, SK
+     * Approved values: CZ, EN, DE, FR, HU, IT, JP, PL, PT, RO, RU, SK, ES, TR, VN
      *
      * @var string
      */

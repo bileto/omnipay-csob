@@ -96,23 +96,7 @@ class InitPaymentRequest extends AbstractRequest
      */
     public function getData()
     {
-        $data = [
-            "merchantId" => $this->getParameter('merchantId'),
-            "orderNo" => $this->getParameter('orderNo'),
-            "dttm" => $this->getParameter('dttm'),
-            "payOperation" => $this->getParameter('payOperation'),
-            "payMethod" => $this->getParameter('payMethod'),
-            "totalAmount" => $this->getParameter('totalAmount'),
-            "currency" => $this->getParameter('currency'),
-            "closePayment" => $this->getParameter('closePayment'),
-            "returnUrl" => $this->getParameter('returnUrl'),
-            "returnMethod" => $this->getParameter('returnMethod'),
-            "cart" => $this->getParameter('cart'),
-            "description" => $this->getParameter('description'),
-            "merchantData" => $this->getParameter('merchantData'),
-            "customerId" => $this->getParameter('customerId'),
-            "language" => $this->getParameter('language'),
-        ];
+        $data = $this->getParameters();
         $data['signature'] = $this->signData($data);
         return $data;
     }

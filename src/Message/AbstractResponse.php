@@ -2,9 +2,10 @@
 
 namespace Omnipay\Csob\Message;
 
+use Omnipay\Common\Message\AbstractResponse as OmnipayAbstractResponse;
 use Omnipay\Csob\Sign\DataVerifier;
 
-class AbstractResponse extends \Omnipay\Common\Message\AbstractResponse
+class AbstractResponse extends OmnipayAbstractResponse
 {
     /** @var DataVerifier */
     private $verifier;

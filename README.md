@@ -48,3 +48,8 @@ try {
     dump((string)$e);
 }
 ```
+
+## Settings
+
+
+If you would like to use `PLN` and `HUF` currencies, you need to send email to `akceptacekaret@csob.cz` with your MerchantIds (sandbox and production). This functionality will be available September 2016.

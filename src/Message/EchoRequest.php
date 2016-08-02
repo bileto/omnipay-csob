@@ -25,10 +25,7 @@ class EchoRequest extends AbstractRequest
      */
     public function getData()
     {
-        $data = [
-            "merchantId" => $this->getParameter('merchantId'),
-            "dttm" => $this->getParameter('dttm'),
-        ];
+        $data = $this->getParameters();
         $data['signature'] = $this->signData($data);
         return $data;
     }

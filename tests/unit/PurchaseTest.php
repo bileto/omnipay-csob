@@ -1,5 +1,6 @@
 <?php
 
+use Omnipay\Csob\CartItem;
 use Omnipay\Csob\Purchase;
 
 class PurchaseTest extends PHPUnit_Framework_TestCase
@@ -7,7 +8,7 @@ class PurchaseTest extends PHPUnit_Framework_TestCase
     public function testToArray()
     {
         $purchase = new Purchase('merch123', '00456', 'http://eshop.com', 'Some desc');
-        $item = new \Omnipay\Csob\CartItem("Some item", 2, 150.50, "Some cart item");
+        $item = new CartItem("Some item", 2, 150.50, "Some cart item");
         $purchase->addCartItem($item);
         $purchase->setDttm('xyz');
         $expected = [

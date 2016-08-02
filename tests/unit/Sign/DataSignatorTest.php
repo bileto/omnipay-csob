@@ -1,15 +1,20 @@
 <?php
 
+use Omnipay\Csob\Sign\DataSignator;
+use Omnipay\Csob\Sign\Preparer;
+use Omnipay\Csob\Sign\Signator;
+use Omnipay\Csob\Sign\Verifier;
+
 class DataSignatorTest extends PHPUnit_Framework_TestCase {
 
     public function testSign()
     {
         $privateKey = file_get_contents(__DIR__ . '/assets/rsa_A1029DTmM7.key');
         $publicKey = file_get_contents(__DIR__ . '/assets/rsa_A1029DTmM7.pub');
-        $preparer = new \Omnipay\Csob\Sign\Preparer();
-        $signator = new \Omnipay\Csob\Sign\Signator($privateKey);
-        $verifier = new \Omnipay\Csob\Sign\Verifier($publicKey);
-        $signator = new \Omnipay\Csob\Sign\DataSignator($preparer, $signator);
+        $preparer = new Preparer();
+        $signator = new Signator($privateKey);
+        $verifier = new Verifier($publicKey);
+        $signator = new DataSignator($preparer, $signator);
 
         $data = [
             "merchantId" => "A1029DTmM7",
