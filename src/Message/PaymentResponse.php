@@ -13,9 +13,10 @@ class PaymentResponse extends AbstractResponse
 
     public function getTransactionReference()
     {
-        if (isset($this->data['payId'])) {
-            return $this->data['payId'];
+        if (isset($this->data['payId']) && !empty($this->data['payId'])) {
+            return (string) $this->data['payId'];
         }
+        return null;
     }
 
 
