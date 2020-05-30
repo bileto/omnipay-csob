@@ -136,7 +136,7 @@ class Gateway extends AbstractGateway
     {
         $data = [
             'merchantId' => $merchantId,
-            'dttm' => date('Ymdhis'),
+            'dttm' => date('YmdHis'),
         ];
 
         /** @var EchoRequest $request */

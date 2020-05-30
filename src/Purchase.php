@@ -463,6 +463,6 @@ class Purchase
     protected function generateDttm()
     {
         // should be private, but has to be protected because of mocking
-        return date('Ymdhis');
+        return date('YmdHis');
     }
 }
