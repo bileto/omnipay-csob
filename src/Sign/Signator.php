@@ -27,7 +27,7 @@ class Signator
     public function sign($text) {
         $privateKeyId = openssl_get_privatekey($this->privateKey, $this->privateKeyPassword);
 
-        openssl_sign($text, $signature, $privateKeyId);
+        openssl_sign($text, $signature, $privateKeyId, OPENSSL_ALGO_SHA256);
         $signature = base64_encode($signature);
         openssl_free_key($privateKeyId);
 

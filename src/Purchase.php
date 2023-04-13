@@ -16,10 +16,10 @@ class Purchase
     const CURRENCY_HUF = 'HUF';
     const CURRENCY_PLN = 'PLN';
 
-    const LANG_CZ = 'CZ';
-    const LANG_EN = 'EN';
-    const LANG_DE = 'DE';
-    const LANG_SK = 'SK';
+    const LANG_CS = 'cs';
+    const LANG_EN = 'en';
+    const LANG_DE = 'de';
+    const LANG_SK = 'sk';
 
     const PAY_OPERATION_PAYMENT = 'payment';
     const PAY_METHOD_CARD = 'card';
@@ -112,6 +112,12 @@ class Purchase
      */
     private $cart = [];
 
+    /** @var array<mixed> */
+    private $customer = [];
+
+    /** @var array<mixed> */
+    private $order = [];
+
     /**
      * Brief description of the purchase for 3DS page:
      * In case of customer verification on the issuing bank’s side, the
@@ -149,7 +155,7 @@ class Purchase
      *
      * @var string
      */
-    private $language = self::LANG_CZ;
+    private $language = self::LANG_CS;
 
     /**
      * @param string $merchantId
@@ -255,6 +261,16 @@ class Purchase
         }
     }
 
+    public function setCustomer(array $customer)
+    {
+        $this->customer = $customer;
+    }
+
+    public function setOrder(array $order)
+    {
+        $this->order = $order;
+    }
+
     /**
      * In version v1, at least 1 item (e.g. “credit charge”) and at most 2 items
      * must be in the cart (e.g. “purchase for my shop” and “shipment costs”).
@@ -271,6 +287,8 @@ class Purchase
 
     /**
      * @param string $description
+     *
+     * @deprecated
      */
     public function setDescription($description)
     {
@@ -438,10 +456,16 @@ class Purchase
             "returnUrl" => (string)$this->getReturnUrl(),
             "returnMethod" => (string)$this->getReturnMethod(),
             "cart" => [],
-            "description" => (string)$this->getDescription(),
+            "customer" => $this->customer,
+            "order" => $this->order,
             "merchantData" => (string)$this->getMerchantData(),
             "customerId" => (string)$this->getCustomerId(),
             "language" => (string)$this->getLanguage(),
+            "ttlSec" => null,
+            "logoVersion" => null,
+            "colorSchemeVersion" => null,
+            "customExpiry" => null,
+            // FIXME Deprecate "description" => (string)$this->getDescription(),
         ];
 
         /** @var CartItem $cartItem */

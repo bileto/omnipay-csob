@@ -20,10 +20,8 @@ class ProcessPaymentResponse extends OmnipayAbstractResponse implements Redirect
 
     /**
      * Is the response successful?
-     *
-     * @return boolean
      */
-    public function isSuccessful()
+    public function isSuccessful(): bool
     {
         return false;
     }
@@ -31,7 +29,7 @@ class ProcessPaymentResponse extends OmnipayAbstractResponse implements Redirect
     /**
      * Gets the redirect target url.
      */
-    public function getRedirectUrl()
+    public function getRedirectUrl(): string
     {
         return $this->redirectUrl;
     }
@@ -39,7 +37,7 @@ class ProcessPaymentResponse extends OmnipayAbstractResponse implements Redirect
     /**
      * Get the required redirect method (either GET or POST).
      */
-    public function getRedirectMethod()
+    public function getRedirectMethod(): string
     {
         return GuzzleRequestInterface::GET;
     }
@@ -52,10 +50,8 @@ class ProcessPaymentResponse extends OmnipayAbstractResponse implements Redirect
         return;
     }
 
-    public function isRedirect()
+    public function isRedirect(): bool
     {
         return true;
     }
-
-
 }

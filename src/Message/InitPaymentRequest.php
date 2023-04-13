@@ -7,7 +7,6 @@ use Omnipay\Common\Message\ResponseInterface;
 
 class InitPaymentRequest extends AbstractRequest
 {
-
     public function setMerchantId($value)
     {
         $this->setParameter('merchantId', $value);
@@ -68,9 +67,14 @@ class InitPaymentRequest extends AbstractRequest
         $this->setParameter('cart', $value);
     }
 
-    public function setDescription($value)
+    public function setCustomer($value)
     {
-        $this->setParameter('description', $value);
+        $this->setParameter('customer', $value);
+    }
+
+    public function setOrder($value)
+    {
+        $this->setParameter('order', $value);
     }
 
     public function setMerchantData($value)
@@ -86,6 +90,36 @@ class InitPaymentRequest extends AbstractRequest
     public function setLanguage($value)
     {
         $this->setParameter('language', $value);
+    }
+
+    public function setTtlSec($value)
+    {
+        $this->setParameter('ttlSec', $value);
+    }
+
+    public function setLogoVersion($value)
+    {
+        $this->setParameter('logoVersion', $value);
+    }
+
+    public function setColorSchemeVersion($value)
+    {
+        $this->setParameter('colorSchemeVersion', $value);
+    }
+
+    public function setCustomExpiry($value)
+    {
+        $this->setParameter('customExpiry', $value);
+    }
+
+    // FIXME Remove
+
+    /**
+     * @deprecated
+     */
+    public function setDescription($value)
+    {
+        //FIXME Disabled as deprecated $this->setParameter('description', $value);
     }
 
     /**
@@ -104,9 +138,28 @@ class InitPaymentRequest extends AbstractRequest
     private function signData($data)
     {
         $arrayKeys = [
-            'merchantId', 'orderNo', 'dttm', 'payOperation', 'payMethod', 'totalAmount', 'currency', 'closePayment', 'returnUrl',
-            'returnMethod', 'cart', 'description', 'merchantData', 'customerId', 'language'
+            'merchantId',
+            'orderNo',
+            'dttm',
+            'payOperation',
+            'payMethod',
+            'totalAmount',
+            'currency',
+            'closePayment',
+            'returnUrl',
+            'returnMethod',
+            'cart',
+            'customer',
+            'order',
+            'merchantData',
+            'customerId',
+            'language',
+            'ttlSec',
+            'logoVersion',
+            'colorSchemeVersion',
+            'customExpiry',
         ];
+
         return $this->getSignator()->sign($data, $arrayKeys);
     }
 
@@ -119,19 +172,29 @@ class InitPaymentRequest extends AbstractRequest
     public function sendData($data)
     {
         $apiUrl = $this->getApiUrl() . '/payment/init';
+        $stringBody = json_encode($data);
         $httpRequest = $this->httpClient->createRequest(
             RequestInterface::POST,
             $apiUrl,
             ['Content-Type' => 'application/json'],
-            json_encode($data)
+            $stringBody
         );
 
+        print_r($httpRequest->getRawHeaders());
+        print_r($stringBody);
+
         $httpResponse = $httpRequest->send();
-        $data = $httpResponse->json();
-        $response = new PaymentResponse($this, $data);
-        $response->setVerifier($this->getVerifier());
 
-        return $this->response = $response;
+        try {
+            $data = $httpResponse->json();
+            $response = new PaymentResponse($this, $data);
+            $response->setVerifier($this->getVerifier());
+
+            return $this->response = $response;
+        } catch (\Exception $e) {
+            print_r($httpResponse->getBody(true));
+
+            throw $e;
+        }
     }
-
 }
