@@ -15,6 +15,10 @@
   "license": "MIT",
   "authors": [
     {
+      "name": "Josef Petrák",
+      "email": "josef@petrak.xyz"
+    },
+    {
       "name": "Michal Sänger",
       "email": "michal.sanger@bileto.com"
     },
@@ -27,6 +31,8 @@
     "psr-4": { "Omnipay\\Csob\\" : "src/" }
   },
   "require": {
+    "ext-json": "*",
+    "ext-openssl": "*",
     "omnipay/common": "2.5.*"
   },
   "require-dev": {

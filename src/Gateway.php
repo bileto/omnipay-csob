@@ -20,8 +20,8 @@ use Omnipay\Csob\Sign\DataVerifier;
  */
 class Gateway extends AbstractGateway
 {
-    const URL_SANDBOX = 'https://iapi.iplatebnibrana.csob.cz/api/v1.6';
-    const URL_PRODUCTION = 'https://api.platebnibrana.csob.cz/api/v1.6';
+    const URL_SANDBOX = 'https://iapi.iplatebnibrana.csob.cz/api/v1.9';
+    const URL_PRODUCTION = 'https://api.platebnibrana.csob.cz/api/v1.9';
 
     /** @var DataSignator */
     private $signator;

@@ -25,7 +25,7 @@ class GatewayFactory
         $dataSignator = new DataSignator($preparer, $signator);
         $dataVerifier = new DataVerifier($preparer, $verifier);
 
-        /** @var \Omnipay\Csob\Gateway $gateway */
+        /** @var Gateway $gateway */
         $gateway = Omnipay::create('Csob');
         $gateway->setSignator($dataSignator);
         $gateway->setVerifier($dataVerifier);

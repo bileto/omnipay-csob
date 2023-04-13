@@ -24,7 +24,7 @@ class Verifier
         $publicKeyId = openssl_get_publickey($this->publicKey);
 
         $signature = base64_decode($signatureBase64);
-        $res = openssl_verify($text, $signature, $publicKeyId);
+        $res = openssl_verify($text, $signature, $publicKeyId, OPENSSL_ALGO_SHA256);
         openssl_free_key($publicKeyId);
 
         return $res === 1;
