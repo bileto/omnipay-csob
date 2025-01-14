@@ -21,10 +21,17 @@ class Verifier
      * @return bool
      */
     function verify($text, $signatureBase64) {
-        $publicKeyId = openssl_get_publickey($this->publicKey);
+        $publicKeyId = openssl_pkey_get_public($this->publicKey);
 
         $signature = base64_decode($signatureBase64);
         $res = openssl_verify($text, $signature, $publicKeyId, OPENSSL_ALGO_SHA256);
+        if ($res<1) {
+            //print_r($text);
+            //print_r($this->publicKey);
+            while($err = openssl_error_string()) {
+                print_r($err);
+            }
+        }
         openssl_free_key($publicKeyId);
 
         return $res === 1;

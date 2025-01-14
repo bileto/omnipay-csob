@@ -1,10 +1,13 @@
 <?php
 
-use Omnipay\Csob\Sign\Preparer;
+declare(strict_types=1);
 
-class PreparerTest extends PHPUnit_Framework_TestCase
+use Omnipay\Csob\Sign\Preparer;
+use PHPUnit\Framework\TestCase;
+
+class PreparerTest extends TestCase
 {
-    public function testGetDataToSign()
+    public function testGetDataToSign(): void
     {
         $preparer = new Preparer();
         $data = [
@@ -32,23 +35,22 @@ class PreparerTest extends PHPUnit_Framework_TestCase
                     "description" => "PPL"
                 ]
             ],
-            "description" => "Nákup na vasobchod.cz (Lenovo ThinkPad Edge E540, Doprava PPL)",
             "merchantData" => null,
             "customerId" => "1234",
             "language" => "CZ",
         ];
         $keys = [
             'merchantId', 'orderNo', 'dttm', 'payOperation', 'payMethod', 'totalAmount', 'currency', 'closePayment', 'returnUrl',
-            'returnMethod', 'cart', 'description', 'merchantData', 'customerId', 'language'
+            'returnMethod', 'cart', 'merchantData', 'customerId', 'language'
         ];
-        $expectedStrToSign = "A1029DTmM7|1234560|20150624090323|payment|card|100|CZK|false|https://vasobchod.cz/gateway-return|POST|Shopping at ...|1|100|Lenovo ThinkPad Edge E540...|Shipping|1|0|PPL|Nákup na vasobchod.cz (Lenovo ThinkPad Edge E540, Doprava PPL)|1234|CZ";
+        $expectedStrToSign = "A1029DTmM7|1234560|20150624090323|payment|card|100|CZK|false|https://vasobchod.cz/gateway-return|POST|Shopping at ...|1|100|Lenovo ThinkPad Edge E540...|Shipping|1|0|PPL|1234|CZ";
 
         $strToSign = $preparer->getStringToSign($data, $keys);
 
         $this->assertSame($expectedStrToSign, $strToSign);
     }
 
-    public function testGetDataToSignIgnoresNotRequestedKeys()
+    public function testGetDataToSignIgnoresNotRequestedKeys(): void
     {
         $preparer = new Preparer();
         $data = [
@@ -69,7 +71,7 @@ class PreparerTest extends PHPUnit_Framework_TestCase
         $this->assertSame($expectedStrToSign, $strToSign);
     }
 
-    public function testGetDataToSignIgnores()
+    public function testGetDataToSignIgnores(): void
     {
         $preparer = new Preparer();
         $data = [

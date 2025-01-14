@@ -1,10 +1,13 @@
 <?php
 
-use Omnipay\Csob\CartItem;
+declare(strict_types=1);
 
-class CartItemTest extends PHPUnit_Framework_TestCase
+use Omnipay\Csob\CartItem;
+use PHPUnit\Framework\TestCase;
+
+class CartItemTest extends TestCase
 {
-    public function testConstructor()
+    public function testConstructor(): void
     {
         $item = new CartItem("Some item", 2, 150.50, "Some cart item");
 
@@ -14,7 +17,7 @@ class CartItemTest extends PHPUnit_Framework_TestCase
         $this->assertSame("Some cart item", $item->getDescription());
     }
 
-    public function testToArray()
+    public function testToArray(): void
     {
         $item = new CartItem('Foo item', 4, 160.50, 'Foo description');
         $expected = [

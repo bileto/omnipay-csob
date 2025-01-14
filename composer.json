@@ -19,25 +19,25 @@
       "email": "josef@petrak.xyz"
     },
     {
-      "name": "Michal Sänger",
-      "email": "michal.sanger@bileto.com"
+      "name": "Michal Sänger"
     },
     {
-      "name": "Jan Machala",
-      "email": "jan.machala@bileto.com"
+      "name": "Jan Machala"
     }
   ],
   "autoload": {
-    "psr-4": { "Omnipay\\Csob\\" : "src/" }
+    "psr-4": {
+      "Omnipay\\Csob\\" : "src/"
+    }
   },
   "require": {
+    "php": ">=7.1",
     "ext-json": "*",
     "ext-openssl": "*",
     "omnipay/common": "2.5.*"
   },
   "require-dev": {
-    "omnipay/tests": "2.0.*",
-    "symfony/var-dumper": "3.1.*",
-    "mockery/mockery": "0.9.*"
+    "mockery/mockery": "^1.6",
+    "phpunit/phpunit": "^10.5"
   }
 }

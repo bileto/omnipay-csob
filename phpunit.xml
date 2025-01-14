@@ -1,18 +1,25 @@
-<phpunit xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/3.7/phpunit.xsd"
-         backupGlobals="false"
-         backupStaticAttributes="false"
-         bootstrap="./vendor/autoload.php"
-         colors="true"
-         convertErrorsToExceptions="true"
-         convertNoticesToExceptions="true"
-         convertWarningsToExceptions="true"
-         processIsolation="false"
-         stopOnFailure="false">
+<?xml version="1.0" encoding="UTF-8"?>
+<phpunit
+    xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="http://schema.phpunit.de/10.5/phpunit.xsd"
+    backupGlobals="false"
+    backupStaticProperties="false"
+    bootstrap="vendor/autoload.php"
+    colors="true"
+    displayDetailsOnPhpunitDeprecations="true"
+    processIsolation="false"
+    stopOnDeprecation="false"
+    stopOnFailure="false">
+    <logging>
+        <junit outputFile="temp/phpunit.log.xml" />
+    </logging>
+
     <testsuites>
         <testsuite name="Unit Test Suite">
             <directory>./tests/</directory>
         </testsuite>
     </testsuites>
+
     <php>
         <ini name="date.timezone" value="UTC" />
     </php>
