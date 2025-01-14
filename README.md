@@ -15,7 +15,7 @@ to your `composer.json` file:
 ```json
 {
     "require": {
-        "bileto/omnipay-csob": "~0.5"
+        "bileto/omnipay-csob": "~0.8"
     }
 }
 ```
@@ -49,7 +49,10 @@ try {
 }
 ```
 
-## Settings
+## Test Project
 
+The project uses PHPUnit and Mockery to provide unit tests.
 
-If you would like to use `PLN` and `HUF` currencies, you need to send email to `akceptacekaret@csob.cz` with your MerchantIds (sandbox and production). This functionality will be available September 2016.
+```
+./vendor/bin/phpunit
+```
